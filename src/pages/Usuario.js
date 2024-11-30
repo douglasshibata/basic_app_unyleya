@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Table from "../components/Table/Table";
-import Button from "../components/Button/Button";
 
 export default function Usuario() {
     const [users, setUsers] = useState({ users: [], limit: 0, skip: 0, total: 0 });
     const [headers, setHeaders] = useState([]);
+    const [id, setId] = useState({})
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch('https://dummyjson.com/users')
             .then((response) => response.json())
@@ -26,12 +29,13 @@ export default function Usuario() {
                 console.log(err.message);
             });
     }, [])
-    
+    const handleClick = (value) => {
+        setId(value)
+        navigate('/detalhar-usuario', { state: { id: value } });
+    };
     return (
         <div>
-            <Table data={users.users} headers={headers}  options={<>
-                {/* <Button title={'Editar'}></Button> */}
-                </>}/>
+            <Table data={users.users} headers={headers} value={id} onClick={handleClick} />
 
         </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react';
+import Button from '../Button/Button';
 
-export default function Table({ data, headers, options }) {
+export default function Table({ data, headers, onClick, value }) {
     const tableHeader = () => (
         <thead>
             <tr>
@@ -17,7 +18,7 @@ export default function Table({ data, headers, options }) {
                 <tr key={i}>
                     {
                         headers.map(((key, index) => (
-                            <td key={key + index}>{index === 0 ? options : row[key]}</td>
+                            <td key={key + index}>{index === 0 ? <Button onClick={onClick} title={'Detalhar'} value={row.id} /> : row[key]}</td>
                         )))
                     }
                 </tr>
