@@ -3,7 +3,13 @@
 
 ## Objetivos 
 * Consumir a API DUmmy Json [link](https://dummyjson.com/docs)
-* Fazer as operações de CRUD
+* LIstando e detalhando (Usuário, Receita, Produto)
+
+### Requisitos:
+
+O sistema deverá ter pelo menos duas páginas, sendo uma página para a listagem de itens e outra página para detalhar um item selecionado. Ou seja, caso o usuário clique em um dos elementos da listagem na página inicial, ele deve ser direcionado para uma página de detalhes, onde o sistema mostrará detalhes sobre o produto selecionado.
+
+Atente-se: para esse fluxo, deverão ser feitas duas requisições, sendo uma para a busca da lista de itens e outra para a busca do detalhe do item
 
 # Getting Started with Create React App
 

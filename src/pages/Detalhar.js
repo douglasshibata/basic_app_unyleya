@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function DetalharUsuario() {
-    const [user, setUser] = useState({})
+export default function Detalhar() {
+    const [detail, setDetail] = useState({})
     const [header, setheader] = useState([])
     const location = useLocation();
 
     useEffect(() => {
-        fetch('https://dummyjson.com/users/' + location.state.id)
+        fetch('https://dummyjson.com/' + location.state.route + '/' + location.state.id)
             .then(res => res.json())
             .then(res => {
                 const keys = [];
@@ -21,7 +21,7 @@ export default function DetalharUsuario() {
                     }
                 })
                 setheader(keys)
-                setUser(res)
+                setDetail(res)
             })
 
     })
@@ -29,7 +29,7 @@ export default function DetalharUsuario() {
         <div className="container">
             {header.length > 0 ? header.map((info, index) => (
                 <p key={index} >
-                    <strong>{info.toUpperCase()} :  </strong>  {user[info]}
+                    <strong>{info.toUpperCase()} :  </strong>  {detail[info]}
                 </p>
             )) : ''}
         </div>
