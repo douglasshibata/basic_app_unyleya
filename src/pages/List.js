@@ -15,7 +15,7 @@ export default function ListPage({ ITEM_LIST }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://dummyjson.com/' + ITEM_LIST +'?limit=10')
+        fetch('https://dummyjson.com/' + ITEM_LIST )
             .then((response) => response.json())
             .then((data) => {
                 const keys = [''];
@@ -39,6 +39,10 @@ export default function ListPage({ ITEM_LIST }) {
     const detailItem = (value) => {
         navigate('/detalhar', { state: { id: value, route: ITEM_LIST } });
     };
+    const editItem = (value) => {
+        const filterItem = itens[ITEM_LIST].find((item) => item.id === value)
+        navigate('/edit', { state: { id: value, route: ITEM_LIST, filterItem } });
+    };
     const removeItem = (value) => {
         const filterItem = itens[ITEM_LIST].filter((item) => item.id !== value)
         const obj = {
@@ -55,9 +59,8 @@ export default function ListPage({ ITEM_LIST }) {
             .then(console.log);
     };
     return (
-        <div>
-            <Table data={itens[ITEM_LIST]} headers={headers} onClickDetail={detailItem} onClickRemove={removeItem} />
-
+        <div className="container-fluid">
+            <Table data={itens[ITEM_LIST]} headers={headers} onClickDetail={detailItem} onClickRemove={removeItem} type={ITEM_LIST} onClickEdit={editItem} />
         </div>
     )
 }

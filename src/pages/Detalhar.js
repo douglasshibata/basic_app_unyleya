@@ -32,7 +32,7 @@ export default function Detalhar() {
                     Detalhe: {location.state.route.toUpperCase()}
                 </div>
                 {header.length > 0 ? header.map((info, index) => (
-                    <div className="card-body" key={index}>
+                    <div className="card-body" key={index + info}>
                         <p className="card-text" >
                             <strong>{info.toUpperCase()} :  </strong>  {detail[info]}
                         </p>

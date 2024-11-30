@@ -14,8 +14,10 @@ export default function RoutesPages() {
                     <Route path="posts" element={<ListPage ITEM_LIST={'posts'} />} />
                     <Route path="carts" element={<ListPage ITEM_LIST={'carts'} />} />
                     <Route path="todos" element={<ListPage ITEM_LIST={'todos'} />} />
+                    <Route path="comments" element={<ListPage ITEM_LIST={'comments'} />} />
                     <Route path="quotes" element={<ListPage ITEM_LIST={'quotes'} />} />
                     <Route path="detalhar" element={<Detalhar />} />
+                    {/* <Route path="edit" element={<Form />} /> */}
 
                 </Route>
                 <Route path="*" element={<NoPage />} />

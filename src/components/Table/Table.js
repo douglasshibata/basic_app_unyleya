@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-export default function Table({ data, headers, onClickDetail, onClickRemove }) {
+export default function Table({ data, headers, onClickDetail, onClickRemove, type, onClickEdit }) {
     const tableHeader = () => (
         <thead>
             <tr>
@@ -15,8 +15,17 @@ export default function Table({ data, headers, onClickDetail, onClickRemove }) {
     const buttonsOptions = (row) => (
         <div className='d-flex flex-column'>
             <Button onClick={onClickDetail} title={'Detalhar'} icon={'fa-info-circle'} value={row.id} />
-            <Button onClick={onClickRemove} classBtn='btn-danger' icon={'fa-trash'} title={'Remover'} value={row.id} />
+            {type !== 'quotes' ?
+                <>
+                    {/* <Button onClick={onClickEdit} classBtn='btn-success' icon={'fa-pencil'} title={'Editar'} value={row.id} /> */}
+                    <Button onClick={onClickRemove} classBtn='btn-danger' icon={'fa-trash'} title={'Remover'} value={row.id} />
+                </>
+                : ''
+            }
         </div>
+    )
+    const showImage = (row, key) => (
+        <img src={row[key]} alt=""  className="img-thumbnail" />
     )
     const tableBody = () => (
         <tbody>
@@ -24,7 +33,7 @@ export default function Table({ data, headers, onClickDetail, onClickRemove }) {
                 <tr key={i}>
                     {
                         headers.map(((key, index) => (
-                            <td key={key + index}>{index === 0 ? buttonsOptions(row) : row[key]}</td>
+                            <td key={key + index}>{index === 0 ? buttonsOptions(row) : key === 'image' || key === 'thumbnail' ? showImage(row, key) : row[key]}</td>
                         )))
                     }
                 </tr>

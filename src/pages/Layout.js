@@ -28,6 +28,9 @@ const Layout = () => {
                 <li className="nav-item">
                     <Link className="nav-link" to='/quotes'>Frases</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to='/comments'>Comentários</Link>
+                </li>
 
             </ul>
             <Outlet />
