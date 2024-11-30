@@ -27,11 +27,18 @@ export default function Detalhar() {
     })
     return (
         <div className="container">
-            {header.length > 0 ? header.map((info, index) => (
-                <p key={index} >
-                    <strong>{info.toUpperCase()} :  </strong>  {detail[info]}
-                </p>
-            )) : ''}
+            <div className="card" >
+                <div className="card-header">
+                    Detalhe: {location.state.route.toUpperCase()}
+                </div>
+                {header.length > 0 ? header.map((info, index) => (
+                    <div className="card-body" key={index}>
+                        <p className="card-text" >
+                            <strong>{info.toUpperCase()} :  </strong>  {detail[info]}
+                        </p>
+                    </div>
+                )) : ''}
+            </div>
         </div>
     )
 

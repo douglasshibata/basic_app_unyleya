@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-export default function Table({ data, headers, onClick, value }) {
+export default function Table({ data, headers, onClickDetail, onClickRemove }) {
     const tableHeader = () => (
         <thead>
             <tr>
@@ -12,13 +12,19 @@ export default function Table({ data, headers, onClick, value }) {
             </tr>
         </thead>
     )
+    const buttonsOptions = (row) => (
+        <div className='d-flex flex-column'>
+            <Button onClick={onClickDetail} title={'Detalhar'} icon={'fa-info-circle'} value={row.id} />
+            <Button onClick={onClickRemove} classBtn='btn-danger' icon={'fa-trash'} title={'Remover'} value={row.id} />
+        </div>
+    )
     const tableBody = () => (
         <tbody>
-            {data.length > 0 ? data.map((row, i) => (
+            {data?.length > 0 ? data.map((row, i) => (
                 <tr key={i}>
                     {
                         headers.map(((key, index) => (
-                            <td key={key + index}>{index === 0 ? <Button onClick={onClick} title={'Detalhar'} value={row.id} /> : row[key]}</td>
+                            <td key={key + index}>{index === 0 ? buttonsOptions(row) : row[key]}</td>
                         )))
                     }
                 </tr>
@@ -27,8 +33,8 @@ export default function Table({ data, headers, onClick, value }) {
         </tbody>
     )
     return (
-        <div className="table-responsive">
-            <table className="table">
+        <div className="table-responsive container-fluid">
+            <table className="table table-striped">
                 {tableHeader()}
                 {tableBody()}
             </table>
