@@ -25,6 +25,9 @@ export default function Detalhar() {
             })
 
     })
+    const showImage = (row, key) => (
+        <img src={row[key]} alt="" className="img-thumbnail" />
+    )
     return (
         <div className="container">
             <div className="card" >
@@ -34,7 +37,8 @@ export default function Detalhar() {
                 {header.length > 0 ? header.map((info, index) => (
                     <div className="card-body" key={index + info}>
                         <p className="card-text" >
-                            <strong>{info.toUpperCase()} :  </strong>  {detail[info]}
+                            <strong>{info.toUpperCase()} :  </strong>
+                            {info === 'image' || info === 'thumbnail' ? showImage(detail, info) : detail[info]}
                         </p>
                     </div>
                 )) : ''}

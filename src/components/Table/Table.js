@@ -33,7 +33,7 @@ export default function Table({ data, headers, onClickDetail, onClickRemove, typ
                 <tr key={i}>
                     {
                         headers.map(((key, index) => (
-                            <td key={key + index}>{index === 0 ? buttonsOptions(row) : key === 'image' || key === 'thumbnail' ? showImage(row, key) : row[key]}</td>
+                            <td key={key + index}>{index === 0 ? buttonsOptions(row) :( key === 'image' || key === 'thumbnail') ? showImage(row, key) : row[key]}</td>
                         )))
                     }
                 </tr>
