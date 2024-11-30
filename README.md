@@ -1,3 +1,10 @@
+# Link do projeto 
+[Link](https://gleeful-jelly-be63c1.netlify.app/)
+
+## Objetivos 
+* Consumir a API DUmmy Json [link](https://dummyjson.com/docs)
+* Fazer as operações de CRUD
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
